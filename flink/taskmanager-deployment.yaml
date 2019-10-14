@@ -9,9 +9,16 @@ spec:
       labels:
         app: flink
         component: taskmanager
+        applicationId: "flinkOnYunikorn-taskmanager"
+        queue: "root.sandbox"
     spec:
+      schedulerName: yunikorn
       containers:
       - name: taskmanager
+        resources:
+          requests:
+            cpu: "1000m"
+            memory: "1024M"
         image: flink:latest
         args:
         - taskmanager

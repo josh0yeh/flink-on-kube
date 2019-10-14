@@ -9,9 +9,16 @@ spec:
       labels:
         app: flink
         component: jobmanager
+        applicationId: "flinkOnYunikorn-jobmanager"
+        queue: "root.sandbox"
     spec:
+      schedulerName: yunikorn
       containers:
       - name: jobmanager
+        resources:
+          requests:
+            cpu: "1000m"
+            memory: "1024M"
         image: flink:latest
         args:
         - jobmanager
